@@ -381,6 +381,15 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="mt-8 bg-white p-8 rounded-3xl shadow-xl border-t-4 border-greece-blue">
+                    <h3 class="font-classic text-2xl text-greece-blue mb-4"><i class="fa-solid fa-dumbbell mr-2"></i> Práctica Extra del Alfabeto</h3>
+                    <p class="mb-6 text-gray-700">Identifica la letra griega correcta. Haz clic en el botón de audio en las tarjetas de arriba para escuchar la pronunciación antes de practicar.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6" id="extra-alphabet-exercises">
+                        <!-- JS inyectará ejercicios rápidos aquí -->
+                    </div>
+                </div>
             </section>
 
             <section id="view-ortografia" class="view-section">
@@ -607,14 +616,19 @@
                         <span class="font-bold text-greece-blue text-xl border-l-4 border-greece-gold pl-4">Aciertos: <span id="game-score" class="text-green-600 text-2xl">0</span> / <span id="game-total">12</span></span>
                     </div>
                     
-                    <p class="text-center font-bold text-gray-500 mb-6 uppercase tracking-wider">Actividad 1 y 2 (Pág 8): Empareja el original griego con el castellano</p>
+                    <p class="text-center font-bold text-gray-500 mb-6 uppercase tracking-wider">Actividad 1 y 2 (Pág 8): ¿A qué figura mitológica pertenece este nombre?</p>
 
-                    <!-- Columnas del Juego -->
-                    <div class="grid grid-cols-2 gap-6 md:gap-10 relative min-h-[400px]">
-                        <div class="flex flex-col space-y-3" id="col-greek">
+                    <!-- Tablero de Juego Centralizado -->
+                    <div id="game-board-container" class="bg-gray-900 rounded-3xl p-8 shadow-inner flex flex-col items-center justify-center min-h-[350px] relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+                        
+                        <!-- Palabra Griega Objetivo -->
+                        <div id="game-target-word" class="font-greek text-5xl md:text-7xl text-greece-gold font-bold mb-10 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)] z-10 transform transition-all duration-500">
                             <!-- Inyectado vía JS -->
                         </div>
-                        <div class="flex flex-col space-y-3" id="col-spanish">
+                        
+                        <!-- Opciones en Castellano -->
+                        <div id="game-options-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl z-10">
                             <!-- Inyectado vía JS -->
                         </div>
                     </div>
@@ -678,6 +692,45 @@
                             <p class="text-gray-600 mb-8 max-w-md text-lg">Has completado todas las actividades del texto de Heródoto y dominas los contenidos de la Unidad 1 de Griego I.</p>
                             <button onclick="startQuiz()" class="px-8 py-4 bg-greece-blue text-white rounded-xl shadow-lg hover:bg-gray-800 transition font-bold text-xl btn-interactive"><i class="fa-solid fa-rotate-right mr-2"></i> Repetir Evaluación</button>
                         </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200">
+                    <div class="bg-greece-dark text-white p-6">
+                        <h3 class="font-classic text-2xl font-bold"><i class="fa-solid fa-table-list text-greece-gold mr-3"></i> Rúbrica de Evaluación Continua</h3>
+                        <p class="text-gray-300 text-sm mt-2">Criterios de calificación LOMLOE aplicados a esta unidad.</p>
+                    </div>
+                    <div class="overflow-x-auto p-6">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 text-greece-blue">
+                                    <th class="p-4 border font-bold">Criterio Específico</th>
+                                    <th class="p-4 border font-bold text-center">Excelente (9-10)</th>
+                                    <th class="p-4 border font-bold text-center">Adecuado (6-8)</th>
+                                    <th class="p-4 border font-bold text-center">En Proceso (1-5)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="p-4 border font-semibold text-gray-800">Lectura y Ortografía Griega (CE1)</td>
+                                    <td class="p-4 border text-sm text-green-800 bg-green-50/50">Lee fluidamente, identifica todos los espíritus/acentos y copia los textos del campesino sin errores.</td>
+                                    <td class="p-4 border text-sm text-yellow-800 bg-yellow-50/50">Lee con algo de dificultad, pero identifica la mayoría de grafías y acentos.</td>
+                                    <td class="p-4 border text-sm text-red-800 bg-red-50/50">Dificultad severa para identificar letras básicas. Numerosos errores.</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="p-4 border font-semibold text-gray-800">Etimología y Transcripción (CE3)</td>
+                                    <td class="p-4 border text-sm text-green-800 bg-green-50/50">Transcribe perfectamente diptongos y espíritus ásperos (Minijuego Panteón 100%).</td>
+                                    <td class="p-4 border text-sm text-yellow-800 bg-yellow-50/50">Conoce reglas básicas de transcripción, aunque comete errores puntuales.</td>
+                                    <td class="p-4 border text-sm text-red-800 bg-red-50/50">No aplica las reglas de transcripción fonética del griego al castellano.</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="p-4 border font-semibold text-gray-800">Contexto Histórico/Literario (CE5)</td>
+                                    <td class="p-4 border text-sm text-green-800 bg-green-50/50">Relaciona a la perfección etapas históricas, el origen fenicio de la escritura y debate el Mito de Theuth.</td>
+                                    <td class="p-4 border text-sm text-yellow-800 bg-yellow-50/50">Ubica la mayoría de hitos históricos, con algunas confusiones de fechas o conceptos (Evaluación > 60%).</td>
+                                    <td class="p-4 border text-sm text-red-800 bg-red-50/50">Desconoce el eje cronológico y la evolución de los soportes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
@@ -907,26 +960,88 @@
             { u: 'Ψ', l: 'ψ', gr: 'ψῖ', es: 'psi', pr: 'ps' }, { u: 'Ω', l: 'ω', gr: 'ὦ μέγα', es: 'omega', pr: 'o (larga)' }
         ];
 
+        function speakGreek(text) {
+            if ('speechSynthesis' in window) {
+                // Cancelar audios anteriores si se pulsa muy rápido
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'el-GR'; // Idioma griego nativo
+                utterance.rate = 0.8;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
         function buildAlphabetGrid() {
             const grid = document.getElementById('alphabet-grid');
             alphabetData.forEach(letter => {
                 const card = document.createElement('div');
-                card.className = 'flip-card aspect-square h-28 md:h-32 hover:-translate-y-1 transition transform';
+                card.className = 'flip-card aspect-square h-28 md:h-32 hover:-translate-y-1 transition transform group';
                 card.innerHTML = `
                     <div class="flip-card-inner">
                         <div class="flip-card-front hover:bg-gray-50 transition border-greece-blue/20 shadow-md">
                             <span class="text-4xl md:text-5xl font-bold font-greek text-greece-blue">${letter.u} ${letter.l}</span>
+                            <button class="absolute top-2 right-2 text-gray-300 hover:text-greece-gold transition" onclick="event.stopPropagation(); speakGreek('${letter.gr}')" title="Escuchar pronunciación">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
                         </div>
-                        <div class="flip-card-back p-1 text-center flex flex-col justify-center">
+                        <div class="flip-card-back p-1 text-center flex flex-col justify-center relative">
                             <span class="text-sm text-greece-gold font-greek tracking-widest">${letter.gr}</span>
                             <span class="font-bold text-lg md:text-xl uppercase">${letter.es}</span>
                             <span class="text-xs bg-black bg-opacity-30 rounded px-2 py-1 mt-1 font-mono">[${letter.pr}]</span>
+                            <button class="absolute top-2 right-2 text-white/40 hover:text-white transition" onclick="event.stopPropagation(); speakGreek('${letter.gr}')" title="Escuchar pronunciación">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
                         </div>
                     </div>
                 `;
                 card.addEventListener('click', function() { this.classList.toggle('flipped'); });
                 grid.appendChild(card);
             });
+            
+            buildExtraAlphabetExercises();
+        }
+
+        function buildExtraAlphabetExercises() {
+            const container = document.getElementById('extra-alphabet-exercises');
+            const questions = [
+                { q: "¿Qué letra equivale a la 'G' (Gamma)?", opts: ["Γ γ", "Τ τ", "Π π", "Λ λ"], ans: "Γ γ" },
+                { q: "¿Cuál es la letra 'Fi'?", opts: ["Ψ ψ", "Φ φ", "Θ θ", "Δ δ"], ans: "Φ φ" },
+                { q: "Encuentra la 'Omega' (O larga)", opts: ["Ο ο", "Ω ω", "Ε ε", "Η η"], ans: "Ω ω" },
+                { q: "¿Qué letra equivale a la 'J' (Ji)?", opts: ["Χ χ", "Ξ ξ", "Ζ ζ", "Κ κ"], ans: "Χ χ" },
+                { q: "¿Cuál es la 'Dseta' (Z)?", opts: ["Ζ ζ", "Σ σ", "Ξ ξ", "Ψ ψ"], ans: "Ζ ζ" },
+                { q: "¿Qué letra es la 'Pi'?", opts: ["Η η", "Π π", "Ρ ρ", "Μ μ"], ans: "Π π" }
+            ];
+
+            questions.forEach((item, index) => {
+                const box = document.createElement('div');
+                box.className = "bg-gray-50 p-5 rounded-2xl border border-gray-200 shadow-sm";
+                let optsHtml = '';
+                item.opts.forEach(opt => {
+                    optsHtml += `<button onclick="checkExtraAlpha(this, '${opt}', '${item.ans}')" class="font-greek text-2xl font-bold p-3 bg-white border-2 border-gray-200 rounded-xl hover:border-greece-blue transition btn-interactive shadow-sm">${opt}</button>`;
+                });
+                
+                box.innerHTML = `
+                    <p class="font-bold text-gray-800 mb-4">${index + 1}. ${item.q}</p>
+                    <div class="grid grid-cols-4 gap-2">
+                        ${optsHtml}
+                    </div>
+                `;
+                container.appendChild(box);
+            });
+        }
+
+        function checkExtraAlpha(btn, selected, correct) {
+            Array.from(btn.parentElement.children).forEach(b => {
+                b.classList.remove('bg-green-100', 'border-green-500', 'text-green-800', 'bg-red-100', 'border-red-500', 'text-red-800');
+            });
+            
+            if(selected === correct) {
+                btn.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                // Efecto de sonido positivo mediante SpeechSynthesis (sutil)
+                speakGreek("Ναι"); // "Sí" en griego
+            } else {
+                btn.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+            }
         }
 
         const vocabulario = [
@@ -962,7 +1077,6 @@
             }
         }
 
-        /* === MINIJUEGO TRANSCRIPCIÓN (CORREGIDO Y AMPLIADO) === */
         const gameLevels = {
             1: [
                 { gr: 'Ζεύς', es: 'Zeus' }, { gr: 'Ἄρτεμις', es: 'Ártemis' }, { gr: 'Ἥφαιστος', es: 'Hefesto' }, 
@@ -982,14 +1096,14 @@
         };
 
         let currentGameData = [];
-        let selectedGreek = null;
-        let selectedSpanish = null;
+        let currentGamePool = [];
+        let currentTarget = null;
         let pairsFound = 0;
         let activeLevel = 1;
 
         function shuffle(array) {
             let currentIndex = array.length, randomIndex;
-            while (currentIndex != 0) {
+            while (currentIndex !== 0) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex--;
                 [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
@@ -999,7 +1113,9 @@
 
         function loadGameLevel(level) {
             activeLevel = level;
-            currentGameData = gameLevels[level];
+            // Clonación profunda de los datos para no afectar al array original
+            currentGameData = JSON.parse(JSON.stringify(gameLevels[level]));
+            currentGamePool = shuffle([...currentGameData]);
             pairsFound = 0;
             
             // Actualizar UI Botones
@@ -1018,100 +1134,98 @@
             document.getElementById('game-score').textContent = "0";
             document.getElementById('game-feedback').style.opacity = 0;
 
-            const colGreek = document.getElementById('col-greek');
-            const colSpanish = document.getElementById('col-spanish');
-            colGreek.innerHTML = '<h3 class="text-center font-classic text-2xl font-bold text-gray-400 mb-4 border-b pb-2">Griego (Pág 8)</h3>'; 
-            colSpanish.innerHTML = '<h3 class="text-center font-classic text-2xl font-bold text-gray-400 mb-4 border-b pb-2">Castellano</h3>';
-
-            let greeks = shuffle([...currentGameData]);
-            let spanishs = shuffle([...currentGameData]);
-
-            greeks.forEach(item => colGreek.appendChild(createGameBtn(item.gr, 'greek')));
-            spanishs.forEach(item => colSpanish.appendChild(createGameBtn(item.es, 'spanish')));
+            // Iniciar primera ronda
+            nextGameTurn();
         }
 
-        function createGameBtn(text, type) {
-            const btn = document.createElement('button');
-            btn.className = `game-btn w-full py-3 px-4 text-center border-2 border-gray-200 rounded-xl bg-white text-gray-700 hover:border-greece-blue shadow-sm transition transform hover:-translate-y-1 ${type === 'greek' ? 'font-greek font-bold text-xl md:text-2xl' : 'font-bold text-lg md:text-xl'}`;
-            btn.dataset.type = type; btn.dataset.val = text;
-            btn.onclick = () => handleGameClick(btn);
-            return btn;
-        }
-
-        function handleGameClick(btn) {
-            if (btn.classList.contains('matched')) return;
-            const type = btn.dataset.type;
+        function nextGameTurn() {
+            const grid = document.getElementById('game-options-grid');
+            const targetDiv = document.getElementById('game-target-word');
             
-            document.querySelectorAll(`.game-btn[data-type="${type}"]`).forEach(b => {
-                if(!b.classList.contains('matched')) {
-                    b.classList.remove('border-greece-gold', 'bg-yellow-100', 'text-yellow-800', 'scale-105', 'shadow-md');
-                    b.classList.add('border-gray-200', 'bg-white', 'text-gray-700', 'shadow-sm');
-                }
+            if (currentGamePool.length === 0) {
+                // Nivel completado
+                targetDiv.innerHTML = `<i class="fa-solid fa-crown text-greece-gold text-8xl mb-4 animate-bounce"></i>`;
+                targetDiv.classList.remove('font-greek', 'text-7xl');
+                grid.innerHTML = `<button onclick="loadGameLevel(${activeLevel < 3 ? activeLevel + 1 : 1})" class="col-span-1 md:col-span-2 py-4 px-8 bg-greece-gold text-greece-dark font-bold text-xl rounded-2xl hover:bg-yellow-500 transition shadow-lg btn-interactive"><i class="fa-solid fa-play mr-2"></i> ${activeLevel < 3 ? 'Avanzar al Nivel ' + (activeLevel + 1) : '¡Completado! Repetir'}</button>`;
+                return;
+            }
+
+            // Seleccionar nueva palabra objetivo
+            currentTarget = currentGamePool.pop();
+            
+            // Animar entrada
+            targetDiv.classList.remove('scale-100', 'opacity-100');
+            targetDiv.classList.add('scale-50', 'opacity-0');
+            
+            setTimeout(() => {
+                targetDiv.className = "font-greek text-6xl md:text-8xl text-greece-gold font-bold mb-10 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)] z-10 transform transition-all duration-500";
+                targetDiv.textContent = currentTarget.gr;
+                targetDiv.classList.remove('scale-50', 'opacity-0');
+                targetDiv.classList.add('scale-100', 'opacity-100');
+            }, 300);
+
+            // Generar distractores únicos (1 correcta + 3 falsas)
+            let options = [currentTarget.es];
+            let allSpanish = currentGameData.map(item => item.es).filter(es => es !== currentTarget.es);
+            allSpanish = shuffle(allSpanish);
+            
+            for (let i = 0; i < 3 && i < allSpanish.length; i++) {
+                options.push(allSpanish[i]);
+            }
+            options = shuffle(options);
+
+            // Pintar opciones
+            grid.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "py-4 px-6 bg-white border-b-4 border-gray-300 rounded-2xl font-bold text-gray-800 text-xl hover:bg-blue-50 hover:border-greece-blue hover:text-greece-blue transition active:translate-y-1 active:border-b-0 shadow-md";
+                btn.textContent = opt;
+                btn.onclick = () => checkGameMatch(btn, opt);
+                grid.appendChild(btn);
             });
-
-            btn.classList.replace('border-gray-200', 'border-greece-gold');
-            btn.classList.replace('bg-white', 'bg-yellow-100');
-            btn.classList.replace('text-gray-700', 'text-yellow-800');
-            btn.classList.replace('shadow-sm', 'shadow-md');
-            btn.classList.add('scale-105');
-
-            if (type === 'greek') selectedGreek = btn; else selectedSpanish = btn;
-
-            if (selectedGreek && selectedSpanish) checkMatch();
+            
+            document.getElementById('game-feedback').style.opacity = 0;
         }
 
-        function checkMatch() {
-            const valGr = selectedGreek.dataset.val;
-            const valEs = selectedSpanish.dataset.val;
+        function checkGameMatch(btn, selectedSpanish) {
+            // Desactivar todos los botones para evitar doble clic
+            Array.from(document.getElementById('game-options-grid').children).forEach(b => {
+                b.disabled = true;
+                b.classList.add('opacity-50', 'cursor-not-allowed');
+            });
+            btn.classList.remove('opacity-50');
+            
             const fb = document.getElementById('game-feedback');
             
-            // CORRECCIÓN BUG: Guardar referencias locales de los botones seleccionados
-            const currentGreek = selectedGreek;
-            const currentSpanish = selectedSpanish;
-            
-            const isMatch = currentGameData.some(pair => pair.gr === valGr && pair.es === valEs);
-
-            if (isMatch) {
-                currentGreek.className = "game-btn w-full py-3 px-4 text-center border-2 border-green-500 bg-green-100 text-green-800 rounded-xl font-bold matched transform scale-95 opacity-50 font-greek text-xl md:text-2xl transition-all cursor-default";
-                currentSpanish.className = "game-btn w-full py-3 px-4 text-center border-2 border-green-500 bg-green-100 text-green-800 rounded-xl font-bold matched transform scale-95 opacity-50 text-lg md:text-xl transition-all cursor-default";
-                
+            if (selectedSpanish === currentTarget.es) {
+                // Acierto
+                btn.className = "py-4 px-6 bg-green-500 border-b-4 border-green-700 rounded-2xl font-bold text-white text-xl transform scale-105 transition shadow-lg";
                 pairsFound++;
                 document.getElementById('game-score').textContent = pairsFound;
                 
-                fb.innerHTML = `<i class="fa-solid fa-check text-green-500 mr-2"></i> ¡Correcto! <strong>${valGr}</strong> transcribe a <strong>${valEs}</strong>.`;
-                fb.style.color = '#15803d'; // green-700
+                // Hablar
+                speakGreek(currentTarget.gr);
                 
-                if (pairsFound === currentGameData.length) {
-                    setTimeout(() => {
-                        let nextLvlMsg = activeLevel < 3 ? "Puedes continuar con el siguiente nivel." : "¡Has completado todo el Panteón!";
-                        showModal("¡Nivel Superado!", `Has emparejado todos los nombres correctamente.<br><br>${nextLvlMsg}`, "success");
-                    }, 500);
-                }
+                fb.innerHTML = `<i class="fa-solid fa-check text-green-500 mr-2"></i> ¡Correcto!`;
+                fb.style.color = '#15803d';
+                fb.style.opacity = 1;
+                
+                setTimeout(() => nextGameTurn(), 1000);
             } else {
-                currentGreek.classList.replace('border-greece-gold', 'border-red-500');
-                currentGreek.classList.replace('bg-yellow-100', 'bg-red-100');
-                currentSpanish.classList.replace('border-greece-gold', 'border-red-500');
-                currentSpanish.classList.replace('bg-yellow-100', 'bg-red-100');
+                // Fallo
+                btn.className = "py-4 px-6 bg-red-500 border-b-4 border-red-700 rounded-2xl font-bold text-white text-xl transform scale-95 transition shadow-lg animate-pulse";
                 
-                fb.innerHTML = `<i class="fa-solid fa-xmark text-red-600 mr-2"></i> Error. Revisa las normas fonéticas.`;
+                fb.innerHTML = `<i class="fa-solid fa-xmark text-red-600 mr-2"></i> Incorrecto. La transcripción de <strong>${currentTarget.gr}</strong> es <strong>${currentTarget.es}</strong>.`;
                 fb.style.color = '#dc2626';
-
-                setTimeout(() => {
-                    if(!currentGreek.classList.contains('matched')) {
-                        currentGreek.className = "game-btn w-full py-3 px-4 text-center border-2 border-gray-200 rounded-xl bg-white text-gray-700 hover:border-greece-blue shadow-sm transition transform hover:-translate-y-1 font-greek font-bold text-xl md:text-2xl";
-                    }
-                    if(!currentSpanish.classList.contains('matched')) {
-                        currentSpanish.className = "game-btn w-full py-3 px-4 text-center border-2 border-gray-200 rounded-xl bg-white text-gray-700 hover:border-greece-blue shadow-sm transition transform hover:-translate-y-1 font-bold text-lg md:text-xl";
-                    }
-                }, 800);
+                fb.style.opacity = 1;
+                
+                // Devolver a la pool para volver a preguntar luego
+                currentGamePool.unshift(currentTarget);
+                
+                setTimeout(() => nextGameTurn(), 2500);
             }
-
-            fb.style.opacity = 1;
-            selectedGreek = null;
-            selectedSpanish = null;
         }
 
-        /* === CRONOLOGÍA MASIVA CON VIDEOS === */
         const historicalData = [
             { date: "2000 a.C.", title: "Llegada de los griegos y Minoicos", desc: "Aparición de los primeros pobladores, los legendarios pelasgos. Llegada de los griegos: jonios, eolios, aqueos. Gran esplendor de la Civilización minoica en Creta (Rey Minos).", video: "https://www.youtube.com/embed/OkH5HYGIsvA" },
             { date: "1600 a.C.", title: "Civilización Micénica", desc: "Aparición de la civilización micénica en el continente. Ocupación de Cnosos por los micénicos en 1450 a.C. Utilizan escritura Lineal B para administración palacial.", video: "https://www.youtube.com/embed/rDOp75Cd76o" },
@@ -1119,7 +1233,7 @@
             { date: "1200 a.C.", title: "Invasión Doria y Edad Oscura", desc: "Invasión de las tribus dorias y posible llegada de los Pueblos del Mar. Destrucción final de Micenas y sus palacios. Se olvida la escritura Lineal B. Comienza la Edad Oscura o del Hierro (1100 a.C.), con grandes migraciones.", video: "https://www.youtube.com/embed/icjOer3D2fs" },
             { date: "S. VIII a.C. (770 - 700)", title: "Edad Arcaica: Alfabeto y Polis", desc: "Renacimiento griego. Se introduce el alfabeto fenicio. Formación de las ciudades-estado (Polis) como Esparta y Corinto. Comienza la gran colonización por el Mediterráneo. Surgen Homero y Hesíodo, y los primeros Juegos Olímpicos (776 a.C.).", video: "https://www.youtube.com/embed/q4wszHa8HmA" },
             { date: "594 a.C. - 507 a.C.", title: "Hacia la Democracia en Atenas", desc: "Reformas de Solón (abolición de esclavitud por deudas). Tiranía de Pisístrato. Finalmente, en 507 a.C., establecimiento de la democracia radical en Atenas por Clístenes." },
-            { date: "490 - 479 a.C.", title: "Guerras Médicas", desc: "Las polis griegas se unen frente a la invasión del Imperio Persa de Darío y Jerjes. Victorias griegas cruciales en Maratón, Termópilas, Salamina y Platea." },
+            { date: "490 - 479 a.C.", title: "Guerras Médicas", desc: "Las polis griegas se unen frente a la invasión del Imperio Persa de Darío y Jerjes. Victorias griegas cruciales en Maratón, Termópilas, Salamina y Platea.", video: "https://www.youtube.com/embed/2c7Mpyg4PiI" },
             { date: "Siglo V a.C. (461-429)", title: "Expansión de Atenas (Siglo de Pericles)", desc: "Fundación de la Liga de Delos. Atenas se convierte en un imperio marítimo. Reconstrucción de la Acrópolis y el Partenón. Apogeo de la tragedia (Esquilo, Sófocles, Eurípides) y de la historia (Heródoto)." },
             { date: "431 - 404 a.C.", title: "Guerra del Peloponeso", desc: "Conflicto total entre Atenas y sus aliados (Liga de Delos) contra Esparta y los suyos (Liga del Peloponeso). Derrota de Atenas. Peste (muerte de Pericles en 429). Platón nace y Sócrates es condenado a muerte en 399 a.C." },
             { date: "336 - 323 a.C.", title: "Alejandro Magno y el Helenismo", desc: "Filipo de Macedonia unifica Grecia. Su hijo, Alejandro Magno, conquista el Imperio Persa. Su muerte en 323 a.C. marca el inicio del Helenismo: la cultura y lengua griega (Koiné) se difunden por todo el mundo conocido, hasta que Roma conquista Grecia en 146 a.C." }
